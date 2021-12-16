@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Favorite;
+use App\Models\FavoriteCategory;
 use Illuminate\Database\Seeder;
 
-class FavoritesTableSeeder extends Seeder
+class FavoriteCategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,13 +14,13 @@ class FavoritesTableSeeder extends Seeder
      */
     public function run()
     {
-        Favorite::truncate();
+        FavoriteCategory::truncate();
 
         $faker = \Faker\Factory::create();
 
-        for($i = 0; $i < 50; $i++){
-            Favorite::create([
-                'folder_name' => $faker->firstName,
+        for ($i = 0; $i < 5; $i++) {
+            FavoriteCategory::create([
+                'folder_name' => $faker->name,
                 'description' => $faker->sentence
             ]);
         }

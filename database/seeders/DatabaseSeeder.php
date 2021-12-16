@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\FavoriteCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,8 +17,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(UsersTableSeeder::class);
         $this->call(ClientsTableSeeder::class);
-        $this->call(FavoritesTableSeeder::class);
+        $this->call(FavoriteCategoriesTableSeeder::class);
         $this->call(RecordsTableSeeder::class);
-        $this->call(TypesTableSeeder::class);
     }
 }

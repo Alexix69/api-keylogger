@@ -12,8 +12,10 @@ class Record extends Model
       'window_name',
       'event_type',
       'archived',
+      'favorite',
       'date',
       'time',
+      'type',
       'content'
     ];
     use HasFactory;

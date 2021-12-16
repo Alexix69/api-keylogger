@@ -20,9 +20,12 @@ class CreateRecordsTable extends Migration
             $table->string('window_name');
             $table->string('event_type');
             $table->boolean('archived');
+            $table->boolean('favorite');
             $table->date('date');
             $table->time('time');
-            $table->text('content');
+            $table->string('type');
+//            $table->text('content');
+            $table->longText('content');
         });
     }
 
