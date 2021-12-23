@@ -22,6 +22,43 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
+Route::post('/login', [UserController::class, 'authenticate']);
+/*
+Route::group(['middleware' => ['jwt.verify']], function () {
+    //VISUALIZAR REGISTROS DE ACUERDO AL TIPO
+    Route::get('/records', [RecordController::class, 'index']);
+    Route::get('/records/keystrokes', [RecordController::class, 'indexKeystrokes']);
+    Route::get('/records/screenshots', [RecordController::class, 'indexScreenshots']);
+    Route::get('/records/websites', [RecordController::class, 'indexWebsites']);
+
+//VISUALIZAR REGISTROS MARCADOS COMO ARCHIVADOS/FAVORITOS
+    Route::get('/records/archived', [RecordController::class, 'indexArchivedRecords']);
+    Route::get('/records/favorites', [RecordController::class, 'indexFavoriteRecords']);
+
+    Route::get('/records/{record}', [RecordController::class, 'show']);
+
+//GUARDAR REGISTRO EN LA BD
+    Route::post('/records', [RecordController::class, 'store']);
+//MARCAR/DESMARCAR UN REGISTRO COMO ARCHIVADO
+    Route::put('/records/{record}', [RecordController::class, 'handleArchivedStatus']);
+
+//CRUD DE CATEGORIAS DE FAVORITOS
+    Route::get('/favorite_categories', [FavoriteCategoryController::class, 'index']);
+    Route::get('/favorite_categories/{favoriteCategory}', [FavoriteCategoryController::class, 'show']);
+    Route::post('/favorite_categories', [FavoriteCategoryController::class, 'store']);
+    Route::put('/favorite_categories/{favoriteCategory}', [FavoriteCategoryController::class, 'updateFolder']);
+    Route::delete('/favorite_categories/{favoriteCategory}', [FavoriteCategoryController::class, 'deleteCategory']);
+
+//VISUALIZAR CLIENTES
+    Route::get('/clients', [ClientController::class, 'index']);
+    Route::get('/clients/{client}', [ClientController::class, 'show']);
+    Route::delete('/clients/{client}', [ClientController::class, 'delete']);
+
+});
+*/
+
+
+
 //VISUALIZAR REGISTROS DE ACUERDO AL TIPO
 Route::get('/records', [RecordController::class, 'index']);
 Route::get('/records/keystrokes', [RecordController::class, 'indexKeystrokes']);
@@ -49,6 +86,8 @@ Route::delete('/favorite_categories/{favoriteCategory}', [FavoriteCategoryContro
 //VISUALIZAR CLIENTES
 Route::get('/clients', [ClientController::class, 'index']);
 Route::get('/clients/{client}', [ClientController::class, 'show']);
-Route::delete('/clients/{client}', [ClientController::class, 'delete']);
+Route::post('/clients', [ClientController::class, 'store']);
+Route::put('/clients/{client}', [ClientController::class, 'handleClientStatus']);
 
 Route::get('/user', [UserController::class, 'show']);
+

@@ -9,7 +9,7 @@ class RecordController extends Controller
 {
     public function index()
     {
-        return response()->json(Record::all());
+        return response()->json(Record::where('archived', 0)->get());
     }
 
     public function indexKeystrokes()

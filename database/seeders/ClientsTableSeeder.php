@@ -21,7 +21,8 @@ class ClientsTableSeeder extends Seeder
         for($i = 0; $i < 5; $i++){
             Client::create([
                 'nickname' => $faker->firstName,
-                'desktop_name' => $faker->userName
+                'desktop_name' => $faker->userName,
+                'is_active' => $faker->numberBetween(0, 1)
             ]);
         }
     }

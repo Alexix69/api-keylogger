@@ -9,7 +9,7 @@ class ClientController extends Controller
 {
     public function index()
     {
-        return response()->json(Client::all());
+        return response()->json(Client::where('is_active', 1)->get());
     }
 
     public function show(Client $client)
@@ -17,9 +17,21 @@ class ClientController extends Controller
         return response()->json($client, 201);
     }
 
-    public function delete(Client $client)
+    public function store(Request $request)
     {
-        $client->delete();
-        return response()->json(null, 204);
+        return response()->json(Client::create($request->all()), 201);
+    }
+
+    public function handleClientStatus(Client $client)
+    {
+        if ($client->is_active === 0) {
+            $client->is_active = 1;
+        } else {
+            $client->is_active = 0;
+        }
+
+        $client->save();
+        return response()->json($client, 200);
     }
 }
+//COMPLETO HASTA IS_ACTIVE DE CLIENTE, AGREGAR FUNCIONALIDAD DE ACTIVAR Y DESACTIVAR

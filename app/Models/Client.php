@@ -9,7 +9,13 @@ class Client extends Model
 {
     protected $fillable = [
         'nickname',
-        'desktopname'
+        'desktop_name',
+        'is_active'
     ];
     use HasFactory;
+
+    public function records()
+    {
+        return $this->hasMany('App\Models\Record');
+    }
 }
