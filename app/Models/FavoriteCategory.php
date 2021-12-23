@@ -11,4 +11,9 @@ class FavoriteCategory extends Model
         'folder_name',
         'description'
     ];
+
+    public function records()
+    {
+        return $this->hasMany('App\Models\Record');
+    }
 }

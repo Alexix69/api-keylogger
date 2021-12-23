@@ -24,8 +24,8 @@ class CreateRecordsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('type');
-//            $table->text('content');
             $table->longText('content');
+
         });
     }
 
