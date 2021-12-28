@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\FavoriteCategory;
 use Illuminate\Database\Seeder;
+use Namshi\JOSE\JWT;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class FavoriteCategoriesTableSeeder extends Seeder
 {
@@ -17,8 +19,8 @@ class FavoriteCategoriesTableSeeder extends Seeder
         FavoriteCategory::truncate();
 
         $faker = \Faker\Factory::create();
-
-        for ($i = 0; $i < 5; $i++) {
+        JWTAuth::attempt(['email' => 'administrador@dashboard.com', 'password' => '123123']);
+        for ($i = 0; $i < 7; $i++) {
             FavoriteCategory::create([
                 'folder_name' => $faker->name,
                 'description' => $faker->sentence

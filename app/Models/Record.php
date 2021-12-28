@@ -16,17 +16,19 @@ class Record extends Model
         'date',
         'time',
         'type',
-        'content'
+        'content',
+        'client_id',
+        'favorite_category_id'
     ];
     use HasFactory;
 
     public function client()
     {
-        $this->belongsTo('App\Models\Client');
+        return $this->belongsTo('App\Models\Client');
     }
 
-    public function favoriteCategory()
+    public function category()
     {
-        $this->belongsTo('App\Models\FavoriteCategory');
+       return $this->belongsTo('App\Models\FavoriteCategory');
     }
 }

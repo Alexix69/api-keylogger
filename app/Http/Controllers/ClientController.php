@@ -7,9 +7,18 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function index(){
+        return response()->json(Client::all());
+    }
+
+    public function indexActiveClients()
     {
         return response()->json(Client::where('is_active', 1)->get());
+    }
+
+    public function indexInactiveClients()
+    {
+        return response()->json(Client::where('is_active', 0)->get());
     }
 
     public function show(Client $client)
@@ -34,4 +43,3 @@ class ClientController extends Controller
         return response()->json($client, 200);
     }
 }
-//COMPLETO HASTA IS_ACTIVE DE CLIENTE, AGREGAR FUNCIONALIDAD DE ACTIVAR Y DESACTIVAR
