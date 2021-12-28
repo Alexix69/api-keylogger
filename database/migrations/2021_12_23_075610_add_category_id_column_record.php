@@ -14,8 +14,8 @@ class AddCategoryIdColumnRecord extends Migration
     public function up()
     {
         Schema::table('records', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('favorite_categories')->onDelete('restrict');
+            $table->unsignedBigInteger('favorite_category_id')->default(null)->nullable();
+            $table->foreign('favorite_category_id')->references('id')->on('favorite_categories')->onDelete('set null');
         });
     }
 
@@ -27,7 +27,9 @@ class AddCategoryIdColumnRecord extends Migration
     public function down()
     {
         Schema::table('records', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
+            $table->dropForeign(['favorite_category_id']);
         });
     }
 }
+
+//RELACIÓN PARA VER REPORTES POR CATEGORIAS LISTA, AÑADIR RUTA
