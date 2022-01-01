@@ -2,28 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClientCollection;
 use App\Models\Client;
+use App\Http\Resources\Client as ClientResource;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function index(){
-        return response()->json(Client::all());
+    public function index()
+    {
+        return response()->json(new ClientCollection(Client::all()), 200);
     }
 
     public function indexActiveClients()
     {
-        return response()->json(Client::where('is_active', 1)->get());
+        return response()->json(new ClientCollection(Client::where('is_active', 1)->get()), 200);
     }
 
     public function indexInactiveClients()
     {
-        return response()->json(Client::where('is_active', 0)->get());
+        return response()->json(new ClientCollection(Client::where('is_active', 0)->get()), 200);
     }
 
     public function show(Client $client)
     {
-        return response()->json($client, 201);
+        return response()->json(new ClientResource($client), 201);
     }
 
     public function store(Request $request)
@@ -40,6 +43,7 @@ class ClientController extends Controller
         }
 
         $client->save();
-        return response()->json($client, 200);
+        return response()->json(new ClientResource($client), 200);
     }
 }
+
