@@ -13,7 +13,7 @@ class FavoriteCategoryController extends Controller
 {
     public function index()
     {
-        return response()->json(new FavoriteCategoryCollection(FavoriteCategory::all()), 200);
+        return response()->json(new FavoriteCategoryCollection(FavoriteCategory::all()->sortBy('folder_name')), 200);
     }
 
     public function show(FavoriteCategory $favoriteCategory)

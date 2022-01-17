@@ -12,7 +12,12 @@ class RecordController extends Controller
 {
     public function index()
     {
-        return response()->json(new RecordCollection(Record::where('archived', 0)->get()), 200);
+//        $records = Record::where('archived', 0)->get();
+//        $sortedCollection = $records->sortByDesc('id');
+//        return response()->json(new RecordCollection($sortedCollection), 200);
+        //3/1/2022 CAMBIOS PENDIENTES POR SUBIR
+        return response()->json(new RecordCollection(Record::where('archived', 0)->where('favorite', 0)->get()->sortDesc()->sortByDesc('id')), 200);
+//        return response()->json(new RecordCollection(Record::all()), 200);
     }
 
     public function indexKeystrokes()
@@ -34,7 +39,7 @@ class RecordController extends Controller
     public function indexArchivedRecords()
     {
         // ->where('favorite', 0)->where('favorite_category_id', null)
-        return response()->json(new RecordCollection(Record::where('archived', 1)->where('favorite', 0)->where('favorite_category_id', null)->get()), 200);
+        return response()->json(new RecordCollection(Record::where('archived', 1)->where('favorite', 0)->where('favorite_category_id', null)->get()->sortByDesc('id')), 200);
     }
 
     public function indexFavoriteRecords()
@@ -106,7 +111,5 @@ class RecordController extends Controller
         return response()->json(null, 204);
     }
 
-    public function image(Record $record){
-        return response()->download($record->content);
-    }
 }
+

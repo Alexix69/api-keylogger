@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Resources;
+use App\Models\Record;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -14,13 +15,11 @@ class RecordCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-//        return [
-//            'data' => $this->collection,
-//            'links' => [
-//                'self' => 'link'
-//            ]
-//        ];
-        return parent::toArray($request);
-
+        $all_records = Record::all()->count();
+        return [
+            'data' => parent::toArray($request),
+            'all_records' => $all_records
+        ];
+        //return parent::toArray($request);
     }
 }

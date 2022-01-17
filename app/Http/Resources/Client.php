@@ -14,11 +14,20 @@ class Client extends JsonResource
      */
     public function toArray($request)
     {
+        $keystrokes = $this->records->where('type', 'keystroke')->count();
+        $screenshots = $this->records->where('type', 'screenshot')->count();
+        $websites = $this->records->where('type', 'website')->count();
+        $records = $this->records->count();
         return [
             'id' => $this->id,
             'nickname' => $this->nickname,
             'desktop_name' => $this->desktop_name,
-            'is_active' => $this->is_active
+            'created_at' =>$this->created_at->format('Y-m-d'),
+            'is_active' => $this->is_active,
+            'total_records' => $records,
+            'keystrokes' => $keystrokes,
+            'screenshots' => $screenshots,
+            'websites' => $websites
         ];
     }
 }
