@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Controllers\RecordController;
+use App\Models\Record;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ClientCollection extends ResourceCollection
@@ -14,11 +16,15 @@ class ClientCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-//       return [
-//            'data' => $this->collection,
-//            'links' => [
-//                'self' => 'link'
-//            ]
+//        $keystrokes = Record::where('type', 'keystroke')->count();
+//        $screenshots = Record::where('type', 'screenshot')->count();
+//        $websites = Record::where('type', 'website')->count();
+//
+//        return [
+//            'data' => parent::toArray($request),
+//            'total_keystrokes' => $keystrokes,
+//            'total_screenshots' => $screenshots,
+//            'total_websites' => $websites
 //        ];
         return parent::toArray($request);
     }

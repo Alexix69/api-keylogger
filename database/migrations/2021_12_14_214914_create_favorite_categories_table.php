@@ -17,7 +17,7 @@ class CreateFavoriteCategoriesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('folder_name');
-            $table->string('description');
+            $table->string('description')->nullable();
         });
     }
 

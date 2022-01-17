@@ -18,7 +18,7 @@ class ClientsTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
 
-        for($i = 0; $i < 6; $i++){
+        for($i = 0; $i < 5; $i++){
             Client::create([
                 'nickname' => $faker->firstName,
                 'desktop_name' => $faker->userName,

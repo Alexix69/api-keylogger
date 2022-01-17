@@ -29,7 +29,8 @@ class Record extends JsonResource
             'type' => $this->type,
             'content' => $this->content,
             'client' => new ClientResource($client),
-            //'client' => '/api/clients/' . $this->client_id,
+//            'client' => '/api/clients/' . $this->client_id,
+//            'client' => $this->client_id,
             'favorite_category_id' => $this->favorite_category_id
         ];
     }

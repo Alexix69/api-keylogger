@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ClientCollection;
 use App\Models\Client;
 use App\Http\Resources\Client as ClientResource;
+use App\Http\Resources\RecordCollection;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -45,5 +46,10 @@ class ClientController extends Controller
         $client->save();
         return response()->json(new ClientResource($client), 200);
     }
+
+//    public function keystrokesPerClient (Client $client){
+//        $keystrokes = $client->records->where('type', 'keystroke')->count();
+//        return response()->json($keystrokes, 200);
+//    }
 }
 
