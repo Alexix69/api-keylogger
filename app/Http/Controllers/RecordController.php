@@ -23,7 +23,7 @@ class RecordController extends Controller
     public function indexKeystrokes()
     {
 
-        return response()->json(new RecordCollection(Record::where('type', 'keystroke')->get()), 200);
+        return response()->json(new RecordCollection(Record::where('type', 'keystroke')->get()->sortDesc()->sortByDesc('id')), 200);
     }
 
     public function indexScreenshots()
