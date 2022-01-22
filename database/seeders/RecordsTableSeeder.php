@@ -21,7 +21,7 @@ class RecordsTableSeeder extends Seeder
         JWTAuth::attempt(['email' => 'administrador@dashboard.com', 'password' => '123123']);
 
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Record::create([
                 'app_name' => $faker->domainName,
                 'window_name' => $faker->name,
@@ -37,7 +37,7 @@ class RecordsTableSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Record::create([
                 'app_name' => $faker->domainName,
                 'window_name' => $faker->name,
@@ -52,7 +52,7 @@ class RecordsTableSeeder extends Seeder
                 //'favorite_category_id' => $faker->numberBetween(1, 5)
             ]);
         }
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Record::create([
                 'app_name' => $faker->domainName,
                 'window_name' => $faker->name,
@@ -68,7 +68,7 @@ class RecordsTableSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Record::create([
                 'app_name' => $faker->domainName,
                 'window_name' => $faker->name,
@@ -84,7 +84,7 @@ class RecordsTableSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Record::create([
                 'app_name' => $faker->domainName,
                 'window_name' => $faker->name,
@@ -100,7 +100,7 @@ class RecordsTableSeeder extends Seeder
             ]);
         }
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Record::create([
                 'app_name' => $faker->domainName,
                 'window_name' => $faker->name,
