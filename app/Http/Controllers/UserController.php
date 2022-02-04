@@ -24,7 +24,6 @@ class UserController extends Controller
         }
         $user = JWTAuth::user();
         $user = new UserResource($user);
-//        return response()->json(compact('token', 'user'));
         return response()->json(compact('token', 'user'))
             ->withCookie(
                 'token',
@@ -60,7 +59,6 @@ class UserController extends Controller
     {
         try {
             JWTAuth::invalidate(JWTAuth::getToken());
-
             return response()->json([
                 "status" => "success",
                 "message" => "User successfully logged out."
@@ -78,6 +76,4 @@ class UserController extends Controller
             return response()->json(["message" => "No se pudo cerrar sesión"], 500);
         }
     }
-
-
 }

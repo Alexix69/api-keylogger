@@ -19,7 +19,7 @@ class FavoriteCategoriesTableSeeder extends Seeder
         FavoriteCategory::truncate();
 
         $faker = \Faker\Factory::create();
-        JWTAuth::attempt(['email' => 'administrador@dashboard.com', 'password' => '123123']);
+        JWTAuth::attempt(['email' => 'administrador.keylogger@dashboard.com', 'password' => 'admin2022']);
         for ($i = 0; $i < 5; $i++) {
             FavoriteCategory::create([
                 'folder_name' => $faker->name,

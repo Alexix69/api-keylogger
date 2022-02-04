@@ -37,10 +37,10 @@ class ClientController extends Controller
 
     public function handleClientStatus(Client $client)
     {
-        if ($client->is_active === 0) {
-            $client->is_active = 1;
+        if ($client->is_active === false) {
+            $client->is_active = true;
         } else {
-            $client->is_active = 0;
+            $client->is_active = false;
         }
 
         $client->save();

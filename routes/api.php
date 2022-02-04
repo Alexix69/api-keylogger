@@ -115,8 +115,11 @@ Route::put('/records/favorites/{record}', [RecordController::class, 'handleFavor
 //Route::put('/records/{record}/add_favorite', [RecordController::class, 'assignFavoriteToCategory']);
 
 //MISCELANEOS
+
 Route::post('/logout', [UserController::class, 'logout']);
+
 Route::get('/user', [UserController::class, 'getAuthenticatedUser']);
+
 Route::get('/records/{record}', [RecordController::class, 'show']);
 
 
