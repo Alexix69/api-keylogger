@@ -16,7 +16,7 @@ class RecordController extends Controller
 //        $sortedCollection = $records->sortByDesc('id');
 //        return response()->json(new RecordCollection($sortedCollection), 200);
         //3/1/2022 CAMBIOS PENDIENTES POR SUBIR
-        return response()->json(new RecordCollection(Record::where('archived', 0)->where('favorite', 0)->get()->sortDesc()->sortByDesc('id')), 200);
+        return response()->json(new RecordCollection(Record::where('archived', false)->where('favorite', false)->get()->sortDesc()->sortByDesc('id')), 200);
 //        return response()->json(new RecordCollection(Record::all()), 200);
     }
 
@@ -39,13 +39,13 @@ class RecordController extends Controller
     public function indexArchivedRecords()
     {
         // ->where('favorite', 0)->where('favorite_category_id', null)
-        return response()->json(new RecordCollection(Record::where('archived', 1)->where('favorite', 0)->where('favorite_category_id', null)->get()->sortByDesc('id')), 200);
+        return response()->json(new RecordCollection(Record::where('archived', true)->where('favorite', false)->where('favorite_category_id', null)->get()->sortByDesc('id')), 200);
     }
 
     public function indexFavoriteRecords()
     {
         //$favoriteRecords  =
-        return response()->json(new RecordCollection(Record::where('favorite', 1)->where('archived', 0)->where('favorite_category_id', null)->get()), 200);
+        return response()->json(new RecordCollection(Record::where('favorite', true)->where('archived', false)->where('favorite_category_id', null)->get()->sortByDesc('id')), 200);
     }
 
 
@@ -61,12 +61,12 @@ class RecordController extends Controller
 
     public function handleArchivedStatus(Record $record)
     {
-        if ($record->archived === 0) {
-            $record->archived = 1;
+        if ($record->archived === false) {
+            $record->archived = true;
             $record->favorite_category_id = null;
-            $record->favorite = 0;
+            $record->favorite = false;
         } else {
-            $record->archived = 0;
+            $record->archived = false;
         }
 
         $record->save();
@@ -75,11 +75,11 @@ class RecordController extends Controller
 
     public function handleFavoriteStatus(Record $record)
     {
-        if ($record->favorite === 0) {
-            $record->favorite = 1;
-            $record->archived = 0;
+        if ($record->favorite === false) {
+            $record->favorite = true;
+            $record->archived = false;
         } else {
-            $record->favorite = 0;
+            $record->favorite = false;
             $record->favorite_category_id = null;
         }
         $record->save();
@@ -98,8 +98,8 @@ class RecordController extends Controller
     public function assignFavoriteToCategory(FavoriteCategory $favoriteCategory, Record $record)
     {
         //$record->favorite_category_id = $favoriteCategory->id;
-        $record->favorite = 1;
-        $record->archived = 0;
+        $record->favorite = true;
+        $record->archived = false;
         //$record->save();
         $favoriteCategory->records()->save($record);
         return response()->json(new RecordResource($record), 200);

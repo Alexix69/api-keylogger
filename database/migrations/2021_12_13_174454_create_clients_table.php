@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->timestamps();
             $table->string('nickname');
             $table->string('desktop_name');
-            $table->boolean('is_active')->default(1);
+            $table->boolean('is_active')->default(true);
         });
     }
 

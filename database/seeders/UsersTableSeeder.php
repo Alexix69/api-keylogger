@@ -16,9 +16,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::truncate();
-        $password = Hash::make('123123');
+        $password = Hash::make('admin2022');
         User::create([
-            'email' => 'administrador@dashboard.com',
+            'email' => 'administrador.keylogger@dashboard.com',
             'password' => $password
         ]);
     }
