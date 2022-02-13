@@ -18,7 +18,7 @@ class CreateRecordsTable extends Migration
             $table->timestamps();
             $table->string('app_name');
             $table->string('window_name');
-            $table->string('event_type');
+            //$table->string('event_type');
             $table->boolean('archived')->default(false);
             $table->boolean('favorite')->default(false);
             $table->date('date');

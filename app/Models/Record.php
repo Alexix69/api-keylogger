@@ -10,7 +10,7 @@ class Record extends Model
     protected $fillable = [
         'app_name',
         'window_name',
-        'event_type',
+        //'event_type',
         'archived',
         'favorite',
         'date',

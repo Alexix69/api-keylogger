@@ -22,7 +22,7 @@ class ClientsTableSeeder extends Seeder
             Client::create([
                 'nickname' => $faker->firstName,
                 'desktop_name' => $faker->userName,
-                'is_active' => $faker->numberBetween(0, 1)
+                //'is_active' => $faker->numberBetween(0, 1)
             ]);
         }
     }
