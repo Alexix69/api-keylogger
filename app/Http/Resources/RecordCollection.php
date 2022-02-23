@@ -17,8 +17,8 @@ class RecordCollection extends ResourceCollection
     {
         $all_records = Record::all()->count();
         return [
+            'all_records' => $all_records,
             'data' => parent::toArray($request),
-            'all_records' => $all_records
         ];
         //return parent::toArray($request);
     }

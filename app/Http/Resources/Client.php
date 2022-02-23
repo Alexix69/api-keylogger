@@ -23,7 +23,6 @@ class Client extends JsonResource
             'nickname' => $this->nickname,
             'desktop_name' => $this->desktop_name,
             'created_at' =>$this->created_at->format('Y-m-d'),
-            //'is_active' => $this->is_active,
             'total_records' => $records,
             'keystrokes' => $keystrokes,
             'screenshots' => $screenshots,

@@ -6,6 +6,7 @@ use App\Http\Resources\RecordCollection;
 use App\Models\FavoriteCategory;
 use App\Models\Record;
 use App\Http\Resources\Record as RecordResource;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 
 class RecordController extends Controller
@@ -56,6 +57,15 @@ class RecordController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->type === "screenshot") {
+            $record = Record::create($request->all());
+            $record->content = Cloudinary::upload($record->content, [
+                "folder" => "screenshots-clients"
+            ])->getSecurePath();
+            $record->save();
+            return response()->json($record, 201);
+        }
+
         return response()->json(Record::create($request->all()), 201);
     }
 
